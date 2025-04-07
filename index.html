@@ -3,58 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Contemporáneo</title>
+    <title>Portafolio Creativo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* Paleta de colores contemporánea */
-            --color-bg: #f8f9fb;
+            /* Paleta de colores vibrante */
+            --color-bg: #f7f7ff;
+            --color-text: #2d334a;
+            --color-text-light: #565b73;
+            --color-primary: #8c54ff;
+            --color-secondary: #5ce5d5;
+            --color-tertiary: #ff7676;
             --color-card: #ffffff;
-            --color-accent: #4dabf7;
-            --color-accent-soft: #e7f5ff;
-            --color-dark: #343a40;
-            --color-text: #495057;
-            --color-text-light: #868e96;
-            --color-border: #edf2f7;
-            --color-header: rgba(255, 255, 255, 0.9);
-            --color-hover: #e9ecef;
+            --color-card-alt: #f0f0ff;
+            --color-border: #e9e9fb;
             
-            /* Sombras y bordes */
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            --radius: 12px;
-            
-            /* Espaciado */
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 1rem;
-            --spacing-md: 1.5rem;
-            --spacing-lg: 2rem;
-            --spacing-xl: 3rem;
+            /* Sombras y espaciado */
+            --shadow: 0 10px 30px rgba(140, 84, 255, 0.08);
+            --border-radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
             
             /* Fuentes */
-            --font-size-sm: 0.875rem;
-            --font-size-base: 1rem;
-            --font-size-lg: 1.125rem;
-            --font-size-xl: 1.25rem;
-            --font-size-2xl: 1.5rem;
-            --font-size-3xl: 2rem;
-            --font-size-4xl: 2.5rem;
+            --font-title: 'Space Grotesk', sans-serif;
+            --font-text: 'Sora', sans-serif;
         }
 
         [data-theme="dark"] {
-            --color-bg: #212529;
-            --color-card: #2b3035;
-            --color-accent: #339af0;
-            --color-accent-soft: #1c2530;
-            --color-dark: #e9ecef;
-            --color-text: #dee2e6;
-            --color-text-light: #adb5bd;
-            --color-border: #343a40;
-            --color-header: rgba(43, 48, 53, 0.95);
-            --color-hover: #343a40;
+            --color-bg: #111827;
+            --color-text: #f3f4f6;
+            --color-text-light: #d1d5db;
+            --color-primary: #a78bfa;
+            --color-secondary: #5eead4;
+            --color-tertiary: #ff8c8c;
+            --color-card: #1f2937;
+            --color-card-alt: #1a2233;
+            --color-border: #374151;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         * {
@@ -64,593 +51,859 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: var(--font-text);
             background-color: var(--color-bg);
             color: var(--color-text);
             line-height: 1.6;
-            font-weight: 400;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: var(--transition);
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1140px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 var(--spacing-md);
+            padding: 0 2rem;
         }
 
         a {
-            color: var(--color-accent);
             text-decoration: none;
-            transition: color 0.2s ease;
+            color: var(--color-primary);
+            transition: var(--transition);
         }
 
         a:hover {
-            color: var(--color-dark);
+            color: var(--color-tertiary);
         }
 
-        /* --- Header --- */
-        .site-header {
-            position: sticky;
+        /* Shapes decorativos */
+        .shape-1, .shape-2, .shape-3 {
+            position: absolute;
+            z-index: -1;
+            filter: blur(40px);
+            opacity: 0.5;
+            border-radius: 50%;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--color-primary);
+            top: 10%;
+            left: -5%;
+        }
+
+        .shape-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--color-secondary);
+            bottom: 20%;
+            right: -5%;
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--color-tertiary);
+            top: 50%;
+            right: 20%;
+        }
+
+        /* Header */
+        .header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
             top: 0;
-            background-color: var(--color-header);
-            backdrop-filter: blur(10px);
             z-index: 100;
-            border-bottom: 1px solid var(--color-border);
-            padding: var(--spacing-sm) 0;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background: rgba(247, 247, 255, 0.8);
         }
 
-        .header-wrapper {
+        [data-theme="dark"] .header {
+            background: rgba(31, 41, 55, 0.8);
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: 'Fraunces', serif;
-            font-weight: 600;
-            font-size: var(--font-size-xl);
-            color: var(--color-dark);
-            letter-spacing: -0.5px;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            letter-spacing: -1px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         .nav-list {
             display: flex;
             list-style: none;
-            gap: var(--spacing-md);
+            gap: 1.5rem;
         }
 
         .nav-link {
             color: var(--color-text);
             font-weight: 500;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            font-size: var(--font-size-base);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transition: width 0.3s ease;
         }
 
         .nav-link:hover {
-            background-color: var(--color-hover);
-            color: var(--color-dark);
+            color: var(--color-primary);
         }
 
-        .header-actions {
-            display: flex;
-            gap: var(--spacing-sm);
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         .theme-toggle {
             background: none;
             border: none;
             color: var(--color-text);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: var(--transition);
+            background: var(--color-card);
+            box-shadow: var(--shadow);
         }
 
         .theme-toggle:hover {
-            background-color: var(--color-hover);
+            transform: translateY(-3px);
         }
 
-        .sun-icon, .moon-icon {
-            display: none;
-        }
-
-        [data-theme="dark"] .moon-icon {
-            display: block;
-        }
-
-        [data-theme="light"] .sun-icon {
-            display: block;
-        }
-
-        .mobile-toggle {
+        .hamburger {
             display: none;
             background: none;
             border: none;
-            color: var(--color-text);
-            font-size: var(--font-size-xl);
             cursor: pointer;
+            color: var(--color-text);
+            font-size: 1.5rem;
         }
 
-        /* --- Hero Section --- */
-        .hero-section {
-            padding: var(--spacing-xl) 0;
-            display: flex;
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
-            min-height: calc(80vh - 70px);
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
-            align-items: center;
-        }
-
-        .hero-text {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-md);
+            gap: 1.5rem;
         }
 
-        .hero-greeting {
-            font-weight: 500;
-            color: var(--color-accent);
-            font-size: var(--font-size-lg);
-            display: flex;
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
-            gap: var(--spacing-xs);
+            gap: 0.5rem;
+            background: var(--color-card-alt);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            color: var(--color-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            width: fit-content;
         }
 
-        .hero-greeting::before {
-            content: "";
-            width: 40px;
-            height: 2px;
-            background-color: var(--color-accent);
-            display: inline-block;
-        }
-
-        .hero-name {
-            font-family: 'Fraunces', serif;
-            font-size: var(--font-size-4xl);
-            font-weight: 600;
-            line-height: 1.2;
-            color: var(--color-dark);
-            margin-bottom: var(--spacing-xs);
+        .hero-badge i {
+            font-size: 0.8rem;
         }
 
         .hero-title {
-            font-size: var(--font-size-xl);
+            font-family: var(--font-title);
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--color-text), var(--color-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
             color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .button-primary, .button-secondary {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
             font-weight: 500;
-            margin-bottom: var(--spacing-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
         }
 
-        .hero-bio {
-            margin-bottom: var(--spacing-md);
-            font-size: var(--font-size-lg);
+        .button-primary {
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            box-shadow: 0 5px 15px rgba(140, 84, 255, 0.3);
+        }
+
+        .button-secondary {
+            background: var(--color-card);
             color: var(--color-text);
-            line-height: 1.7;
+            border: 1px solid var(--color-border);
         }
 
-        .hero-image-container {
+        .button-primary:hover, .button-secondary:hover {
+            transform: translateY(-5px);
+        }
+
+        .hero-image-wrapper {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .blob {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: blobAnimation 8s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes blobAnimation {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
         }
 
         .hero-image {
             width: 320px;
             height: 320px;
-            border-radius: 16px;
             object-fit: cover;
+            border-radius: 30px;
+            position: relative;
+            z-index: 2;
             box-shadow: var(--shadow);
-            border: 6px solid var(--color-card);
-            transition: transform 0.3s ease;
+            border: 5px solid var(--color-card);
+            transition: var(--transition);
         }
 
-        .hero-image-container::before {
-            content: "";
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            border-radius: 16px;
-            background: var(--color-accent-soft);
-            z-index: -1;
-            transform: translate(20px, 20px);
-            transition: transform 0.3s ease;
-        }
-
-        .hero-image-container:hover .hero-image {
-            transform: translate(-5px, -5px);
-        }
-
-        .hero-image-container:hover::before {
-            transform: translate(25px, 25px);
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-md);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-        }
-
-        .contact-item i {
-            color: var(--color-accent);
-            font-size: var(--font-size-lg);
+        .hero-image:hover {
+            transform: scale(1.05) rotate(2deg);
         }
 
         .social-links {
             display: flex;
-            gap: var(--spacing-sm);
-            margin-top: var(--spacing-md);
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .social-link {
             width: 42px;
             height: 42px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--color-card);
+            background: var(--color-card);
+            border-radius: 50%;
             color: var(--color-text);
-            font-size: var(--font-size-lg);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border);
-            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
 
         .social-link:hover {
-            background-color: var(--color-accent);
+            background: var(--color-primary);
             color: white;
-            transform: translateY(-5px);
+            transform: translateY(-5px) rotate(10deg);
         }
 
-        /* --- Section Styles --- */
+        /* Section Styles */
         .section {
-            padding: var(--spacing-xl) 0;
-        }
-
-        .section-title-container {
-            margin-bottom: var(--spacing-xl);
+            padding: 100px 0;
             position: relative;
         }
 
-        .section-title {
-            font-family: 'Fraunces', serif;
-            font-size: var(--font-size-3xl);
-            color: var(--color-dark);
-            font-weight: 600;
-            margin-bottom: var(--spacing-xs);
-            position: relative;
-            display: inline-block;
+        .section-alt {
+            background: var(--color-card-alt);
         }
 
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--color-accent);
-            border-radius: 3px;
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
         }
 
         .section-subtitle {
-            font-size: var(--font-size-lg);
-            color: var(--color-text-light);
-            max-width: 600px;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        /* --- Projects Section --- */
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .section-description {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Projects Grid */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: var(--spacing-lg);
+            gap: 2.5rem;
         }
 
         .project-card {
-            background-color: var(--color-card);
-            border-radius: var(--radius);
+            background: var(--color-card);
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            border: 1px solid var(--color-border);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
             height: 100%;
+            position: relative;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(140, 84, 255, 0.15);
+        }
+
+        .project-featured {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-tertiary));
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            z-index: 2;
         }
 
         .project-content {
-            padding: var(--spacing-lg);
+            padding: 1.5rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
-        .project-header {
-            margin-bottom: var(--spacing-md);
-            position: relative;
-        }
-
         .project-title {
-            font-family: 'Fraunces', serif;
-            font-size: var(--font-size-xl);
-            font-weight: 600;
-            color: var(--color-dark);
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .project-badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background-color: var(--color-accent-soft);
-            color: var(--color-accent);
-            font-size: var(--font-size-sm);
-            font-weight: 500;
-            border-radius: 30px;
-            margin-left: var(--spacing-xs);
-            vertical-align: middle;
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
         }
 
         .project-description {
-            color: var(--color-text);
-            margin-bottom: var(--spacing-md);
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
             line-height: 1.7;
         }
 
-        .project-highlights {
-            margin-bottom: var(--spacing-md);
-            list-style-position: inside;
-            color: var(--color-text);
+        .project-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
         }
 
-        .project-highlights li {
+        .project-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
             margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.2rem;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
         }
 
-        .project-highlights li::before {
-            content: "•";
-            color: var(--color-accent);
-            position: absolute;
-            left: 0;
-            font-size: 1.2em;
+        .project-features li::before {
+            content: '✦';
+            color: var(--color-primary);
+            font-size: 0.8rem;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
+            margin-bottom: 1.5rem;
             margin-top: auto;
-            margin-bottom: var(--spacing-md);
         }
 
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.25rem 0.75rem;
+        .project-tag {
+            background: var(--color-card-alt);
+            color: var(--color-text-light);
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-size: var(--font-size-sm);
-            background-color: var(--color-bg);
-            color: var(--color-text);
+            font-size: 0.8rem;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: var(--transition);
         }
 
-        .tag:hover {
-            background-color: var(--color-accent-soft);
-            color: var(--color-accent);
-            transform: translateY(-2px);
+        .project-tag:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-3px);
         }
 
         .project-link {
-            padding: var(--spacing-sm) 0;
-            color: var(--color-dark);
-            font-weight: 600;
-            border-top: 1px solid var(--color-border);
-            text-align: center;
-            transition: all 0.3s ease;
+            background: var(--color-card-alt);
+            color: var(--color-text);
+            padding: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border-top: 1px solid var(--color-border);
         }
 
         .project-link:hover {
-            background-color: var(--color-accent);
+            background: var(--color-primary);
             color: white;
         }
 
-        /* --- Skills Section --- */
+        /* Skills Section */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
+            gap: 2rem;
         }
 
         .skill-card {
-            background-color: var(--color-card);
-            border-radius: var(--radius);
-            padding: var(--spacing-lg);
+            background: var(--color-card);
+            border-radius: var(--border-radius);
+            padding: 2rem;
             box-shadow: var(--shadow);
-            border: 1px solid var(--color-border);
-            transition: transform 0.3s ease;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
         }
 
-        .skill-card h3 {
-            font-family: 'Fraunces', serif;
-            font-size: var(--font-size-xl);
-            color: var(--color-dark);
-            margin-bottom: var(--spacing-md);
-            font-weight: 600;
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+        }
+
+        .skill-title {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
         .skill-type {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: var(--font-size-sm);
-            padding: 0.2rem 0.7rem;
-            border-radius: 30px;
-            background-color: var(--color-accent-soft);
-            color: var(--color-accent);
+            background: var(--color-card-alt);
+            color: var(--color-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 500;
+            font-family: var(--font-text);
         }
 
-        .skill-keywords {
+        .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.7rem;
         }
 
-        /* --- Education Section --- */
-        .education-card {
-            background-color: var(--color-card);
-            border-radius: var(--radius);
-            padding: var(--spacing-lg);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--color-border);
-            margin-bottom: var(--spacing-md);
-            transition: transform 0.3s ease;
+        .skill-tag {
+            background: var(--color-card-alt);
+            color: var(--color-text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
         }
 
-        .education-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .education-card h3 {
-            font-family: 'Fraunces', serif;
-            font-size: var(--font-size-xl);
-            color: var(--color-dark);
-            margin-bottom: var(--spacing-xs);
-            font-weight: 600;
-        }
-
-        .education-details {
+        .skill-tag:hover {
+            background: var(--color-secondary);
             color: var(--color-text);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* Education Section */
+        .education-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: calc(50% - 1px);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        }
+
+        .education-item {
+            position: relative;
+            width: 100%;
+            padding: 0 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .education-item:nth-child(odd) {
+            float: left;
+            clear: right;
+            text-align: right;
+        }
+
+        .education-item:nth-child(even) {
+            float: right;
+            clear: left;
+            text-align: left;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            top: 0;
+        }
+
+        .education-item:nth-child(odd)::before {
+            right: -10px;
+        }
+
+        .education-item:nth-child(even)::before {
+            left: -10px;
+        }
+
+        .education-content {
+            background: var(--color-card);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .education-content:hover {
+            transform: translateY(-5px);
         }
 
         .education-date {
             display: inline-block;
-            margin-top: var(--spacing-xs);
-            padding: 0.25rem 0.75rem;
-            border-radius: 30px;
-            background-color: var(--color-accent-soft);
-            color: var(--color-accent);
-            font-size: var(--font-size-sm);
+            background: var(--color-card-alt);
+            color: var(--color-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .education-title {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+
+        .education-subtitle {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            background: var(--color-card);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--color-card-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--color-primary);
+            color: white;
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .contact-label {
+            font-weight: 500;
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-value {
+            color: var(--color-text);
             font-weight: 500;
         }
 
-        /* --- Footer --- */
-        .site-footer {
-            background-color: var(--color-card);
-            padding: var(--spacing-xl) 0;
+        .contact-social {
+            margin-top: 2rem;
+            padding-top: 2rem;
             border-top: 1px solid var(--color-border);
-            margin-top: var(--spacing-xl);
-        }
-
-        .footer-content {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
         }
 
-        .footer-text {
+        /* Footer */
+        .footer {
+            padding: 3rem 0;
+            text-align: center;
             color: var(--color-text-light);
-            font-size: var(--font-size-sm);
+            position: relative;
+            overflow: hidden;
         }
 
-        .footer-links {
-            display: flex;
-            gap: var(--spacing-sm);
+        .footer-shape {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 100px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            filter: blur(80px);
+            opacity: 0.1;
+            border-radius: 50%;
         }
 
-        .footer-links a {
-            color: var(--color-text-light);
-            transition: color 0.2s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--color-accent);
-        }
-
-        /* --- Loader --- */
+        /* Loading */
         .loading {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            width: 100%;
+            background: var(--color-bg);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
             flex-direction: column;
-            gap: var(--spacing-md);
+            gap: 1.5rem;
         }
 
         .loader {
-            width: 48px;
-            height: 48px;
-            border: 3px solid var(--color-accent-soft);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            border-top-color: var(--color-accent);
-            animation: spin 1s linear infinite;
+            position: relative;
+            animation: rotate 1s linear infinite;
         }
 
-        @keyframes spin {
+        .loader::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--color-primary), rgba(0,0,0,0));
+        }
+
+        @keyframes rotate {
             to { transform: rotate(360deg); }
         }
 
         .loading-text {
-            color: var(--color-text-light);
             font-weight: 500;
+            color: var(--color-text);
+            letter-spacing: 1px;
         }
 
-        /* --- Responsive --- */
-        @media (max-width: 992px) {
-            .hero-content {
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .project-card {
+                min-height: auto;
+            }
+
+            .education-timeline::before {
+                left: 30px;
+            }
+
+            .education-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .education-item:nth-child(odd) {
+                float: none;
+                text-align: left;
+            }
+
+            .education-item:nth-child(even) {
+                float: none;
+            }
+
+            .education-item:nth-child(odd)::before,
+            .education-item:nth-child(even)::before {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .nav-list {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--color-card);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1rem;
+                box-shadow: var(--shadow);
+                transform: translateY(-200%);
+                transition: var(--transition);
+                z-index: 99;
+            }
+
+            .nav-list.active {
+                transform: translateY(0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 3rem;
             }
 
-            .hero-image-container {
-                order: -1;
-                margin-bottom: var(--spacing-lg);
+            .hero-badge {
+                margin: 0 auto;
             }
 
-            .hero-greeting::before {
-                display: none;
-            }
-
-            .hero-greeting {
-                justify-content: center;
-            }
-
-            .contact-info {
+            .cta-buttons {
                 justify-content: center;
             }
 
@@ -658,60 +911,16 @@
                 justify-content: center;
             }
 
-            .section-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .section-title-container {
-                text-align: center;
-            }
-
-            .section-subtitle {
-                margin: 0 auto;
-            }
-
-            .projects-grid {
+            .projects-grid, .skills-container {
                 grid-template-columns: 1fr;
             }
-        }
 
-        @media (max-width: 768px) {
-            .nav-list {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--color-card);
-                flex-direction: column;
-                align-items: center;
-                padding: var(--spacing-md) 0;
-                box-shadow: var(--shadow);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                z-index: 99;
-            }
-
-            .nav-list.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .mobile-toggle {
-                display: block;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: var(--spacing-md);
-                text-align: center;
-            }
-
-            .skills-container {
+            .contact-info {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                padding: 2rem;
             }
         }
     </style>
@@ -762,8 +971,7 @@
                 
                 const data = await response.json();
                 renderPortfolio(data);
-                setupThemeToggle();
-                setupMobileMenu();
+                setupEvents();
                 
             } catch (error) {
                 console.error('Error:', error);
@@ -776,14 +984,11 @@
             }
         }
         
-        // Configurar el toggle del tema
-        function setupThemeToggle() {
+        // Configurar eventos de la página
+        function setupEvents() {
+            // Toggle del tema
             const themeToggle = document.getElementById('theme-toggle');
-            // Comprobar preferencias del sistema
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            // Comprobar preferencia guardada o usar preferencia del sistema
-            const savedTheme = localStorage.getItem('theme') || (prefersDarkScheme ? 'dark' : 'light');
+            const savedTheme = localStorage.getItem('theme') || 'light';
             
             document.documentElement.setAttribute('data-theme', savedTheme);
             
@@ -794,22 +999,31 @@
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
             });
-        }
-        
-        // Configurar menú móvil
-        function setupMobileMenu() {
-            const mobileToggle = document.getElementById('mobile-toggle');
+            
+            // Menú móvil
+            const hamburger = document.getElementById('hamburger');
             const navList = document.querySelector('.nav-list');
             
-            mobileToggle.addEventListener('click', () => {
+            hamburger.addEventListener('click', () => {
                 navList.classList.toggle('active');
             });
             
-            // Cerrar menú al hacer clic en un enlace
+            // Cerrar menú al clicar enlaces
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     navList.classList.remove('active');
                 });
+            });
+            
+            // Header scroll efecto
+            const header = document.querySelector('.header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
             });
         }
         
@@ -819,15 +1033,19 @@
             document.title = ${basics.name} ${basics.last_name} | Portafolio;
             
             const portfolioHTML = `
-                <header class="site-header">
-                    <div class="container header-wrapper">
+                <div class="shape-1"></div>
+                <div class="shape-2"></div>
+                <div class="shape-3"></div>
+                
+                <header class="header">
+                    <div class="container header-container">
                         <a href="#" class="logo">${basics.name.charAt(0)}${basics.last_name.split(' ')[0].charAt(0)}</a>
                         
-                        <button id="mobile-toggle" class="mobile-toggle">
-                            <i class="fas fa-bars"></i>
-                        </button>
-                        
-                        <nav>
+                        <div class="nav">
+                            <button id="hamburger" class="hamburger">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            
                             <ul class="nav-list">
                                 <li><a href="#inicio" class="nav-link">Inicio</a></li>
                                 <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
@@ -835,196 +1053,216 @@
                                 <li><a href="#educacion" class="nav-link">Educación</a></li>
                                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
                             </ul>
-                        </nav>
-                        
-                        <div class="header-actions">
-                            <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
-                                <i class="fas fa-sun sun-icon"></i>
-                                <i class="fas fa-moon moon-icon"></i>
+                            
+                            <button id="theme-toggle" class="theme-toggle">
+                                <i class="fas fa-moon"></i>
                             </button>
                         </div>
                     </div>
                 </header>
                 
-                <main>
-                    <section id="inicio" class="hero-section">
-                        <div class="container hero-content">
-                            <div class="hero-text">
-                                <p class="hero-greeting">Hola, soy</p>
-                                <h1 class="hero-name">${basics.name} ${basics.last_name}</h1>
-                                <p class="hero-title">${basics.label}</p>
-                                <p class="hero-bio">${basics.summary}</p>
-                                
-                                <div class="contact-info">
-                                    <div class="contact-item">
-                                        <i class="fas fa-envelope"></i>
-                                        <a href="mailto:${basics.email}">${basics.email}</a>
-                                    </div>
-                                    
-                                    <div class="contact-item">
-                                        <i class="fas fa-phone"></i>
-                                        <a href="tel:${basics.phone}">${basics.phone}</a>
-                                    </div>
-                                    
-                                    <div class="contact-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span>${basics.location.city}, ${basics.location.region}</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="social-links">
-                                    ${basics.profiles.map(profile => `
-                                        <a href="${profile.url}" target="_blank" class="social-link" title="${profile.network}">
-                                            <i class="${getSocialIcon(profile.network)}"></i>
-                                        </a>
-                                    `).join('')}
-                                </div>
+                <section id="inicio" class="hero">
+                    <div class="container hero-container">
+                        <div class="hero-content">
+                            <span class="hero-badge">
+                                <i class="fas fa-code"></i> ${basics.label}
+                            </span>
+                            
+                            <h1 class="hero-title">Hola, soy ${basics.name} ${basics.last_name}</h1>
+                            
+                            <p class="hero-subtitle">${basics.summary}</p>
+                            
+                            <div class="cta-buttons">
+                                <a href="#proyectos" class="button-primary">
+                                    <i class="fas fa-project-diagram"></i> Ver Proyectos
+                                </a>
+                                <a href="#contacto" class="button-secondary">
+                                    <i class="fas fa-envelope"></i> Contacto
+                                </a>
                             </div>
                             
-                            <div class="hero-image-container">
-                                <img src="${basics.image.remote || basics.image.local}" alt="${basics.name}" class="hero-image">
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <section id="proyectos" class="section">
-                        <div class="container">
-                            <div class="section-title-container">
-                                <h2 class="section-title">Proyectos</h2>
-                                <p class="section-subtitle">Una selección de trabajos y proyectos que he desarrollado.</p>
-                            </div>
-                            
-                            <div class="projects-grid">
-                                ${projects.map(project => `
-                                    <div class="project-card">
-                                        <div class="project-content">
-                                            <div class="project-header">
-                                                <h3 class="project-title">
-                                                    ${project.name}
-                                                    ${project.featured ? '<span class="project-badge">Destacado</span>' : ''}
-                                                </h3>
-                                            </div>
-                                            
-                                            <p class="project-description">${project.description}</p>
-                                            
-                                            <ul class="project-highlights">
-                                                ${project.highlights.map(highlight => `
-                                                    <li>${highlight}</li>
-                                                `).join('')}
-                                            </ul>
-                                            
-                                            <div class="project-tags">
-                                                ${project.technologies.map(tech => `
-                                                    <span class="tag">${tech}</span>
-                                                `).join('')}
-                                            </div>
-                                        </div>
-                                        
-                                        <a href="${project.url}" target="_blank" class="project-link">
-                                            <span>Ver proyecto</span>
-                                            <i class="fas fa-arrow-right"></i>
-                                        </a>
-                                    </div>
+                            <div class="social-links">
+                                ${basics.profiles.map(profile => `
+                                    <a href="${profile.url}" target="_blank" class="social-link" title="${profile.network}">
+                                        <i class="${getSocialIcon(profile.network)}"></i>
+                                    </a>
                                 `).join('')}
                             </div>
                         </div>
-                    </section>
-                    
-                    <section id="habilidades" class="section">
-                        <div class="container">
-                            <div class="section-title-container">
-                                <h2 class="section-title">Habilidades</h2>
-                                <p class="section-subtitle">Competencias técnicas y habilidades profesionales.</p>
-                            </div>
-                            
-                            <div class="skills-container">
-                                ${skills.map(skill => `
-                                    <div class="skill-card">
-                                        <h3>
-                                            ${skill.name}
-                                            <span class="skill-type">${skill.type}</span>
-                                        </h3>
-                                        <div class="skill-keywords">
-                                            ${skill.keywords.map(keyword => `
-                                                <span class="tag">${keyword}</span>
+                        
+                        <div class="hero-image-wrapper">
+                            <div class="blob"></div>
+                            <img src="${basics.image.remote || basics.image.local}" alt="${basics.name}" class="hero-image">
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="proyectos" class="section section-alt">
+                    <div class="container">
+                        <div class="section-header">
+                            <span class="section-subtitle">Portafolio</span>
+                            <h2 class="section-title">Mis Proyectos</h2>
+                            <p class="section-description">Una selección de proyectos y trabajos recientes.</p>
+                        </div>
+                        
+                        <div class="projects-grid">
+                            ${projects.map(project => `
+                                <div class="project-card">
+                                    ${project.featured ? '<div class="project-featured">Destacado</div>' : ''}
+                                    
+                                    <div class="project-content">
+                                        <h3 class="project-title">${project.name}</h3>
+                                        <p class="project-description">${project.description}</p>
+                                        
+                                        <ul class="project-features">
+                                            ${project.highlights.map(highlight => `
+                                                <li>${highlight}</li>
+                                            `).join('')}
+                                        </ul>
+                                        
+                                        <div class="project-tags">
+                                            ${project.technologies.map(tech => `
+                                                <span class="project-tag">${tech}</span>
                                             `).join('')}
                                         </div>
                                     </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <section id="educacion" class="section">
-                        <div class="container">
-                            <div class="section-title-container">
-                                <h2 class="section-title">Educación</h2>
-                                <p class="section-subtitle">Formación académica y profesional.</p>
-                            </div>
-                            
-                            ${education.map(edu => `
-                                <div class="education-card">
-                                    <h3>${edu.institution}</h3>
-                                    <p class="education-details">${edu.studyType} en ${edu.area}</p>
-                                    <span class="education-date">${formatDate(edu.startDate)} - ${formatDate(edu.endDate)}</span>
+                                    
+                                    <a href="${project.url}" target="_blank" class="project-link">
+                                        <span>Ver proyecto</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             `).join('')}
                         </div>
-                    </section>
-                    
-                    <section id="contacto" class="section">
-                        <div class="container">
-                            <div class="section-title-container">
-                                <h2 class="section-title">Contacto</h2>
-                                <p class="section-subtitle">¿Interesado en trabajar juntos? ¡Ponte en contacto!</p>
-                            </div>
-                            
-                            <div class="skill-card">
-                                <div class="contact-info" style="margin-top: 0; justify-content: flex-start;">
-                                    <div class="contact-item">
+                    </div>
+                </section>
+                
+                <section id="habilidades" class="section">
+                    <div class="container">
+                        <div class="section-header">
+                            <span class="section-subtitle">Experiencia</span>
+                            <h2 class="section-title">Mis Habilidades</h2>
+                            <p class="section-description">Competencias y tecnologías con las que trabajo.</p>
+                        </div>
+                        
+                        <div class="skills-container">
+                            ${skills.map(skill => `
+                                <div class="skill-card">
+                                    <h3 class="skill-title">
+                                        ${skill.name}
+                                        <span class="skill-type">${skill.type}</span>
+                                    </h3>
+                                    
+                                    <div class="skill-tags">
+                                        ${skill.keywords.map(keyword => `
+                                            <span class="skill-tag">${keyword}</span>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="educacion" class="section section-alt">
+                    <div class="container">
+                        <div class="section-header">
+                            <span class="section-subtitle">Formación</span>
+                            <h2 class="section-title">Mi Educación</h2>
+                            <p class="section-description">Trayectoria académica y formación profesional.</p>
+                        </div>
+                        
+                        <div class="education-timeline">
+                            ${education.map((edu, index) => `
+                                <div class="education-item ${index % 2 === 0 ? 'left' : 'right'}">
+                                    <div class="education-content">
+                                        <span class="education-date">
+                                            ${formatDate(edu.startDate)} - ${formatDate(edu.endDate)}
+                                        </span>
+                                        <h3 class="education-title">${edu.institution}</h3>
+                                        <p class="education-subtitle">${edu.studyType} en ${edu.area}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="contacto" class="section">
+                    <div class="container">
+                        <div class="section-header">
+                            <span class="section-subtitle">Hablemos</span>
+                            <h2 class="section-title">Contacto</h2>
+                            <p class="section-description">¿Tienes un proyecto en mente? No dudes en contactarme.</p>
+                        </div>
+                        
+                        <div class="contact-container">
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
                                         <i class="fas fa-envelope"></i>
-                                        <a href="mailto:${basics.email}">${basics.email}</a>
                                     </div>
-                                    
-                                    <div class="contact-item">
-                                        <i class="fas fa-phone"></i>
-                                        <a href="tel:${basics.phone}">${basics.phone}</a>
-                                    </div>
-                                    
-                                    <div class="contact-item">
-                                        <i class="fas fa-globe"></i>
-                                        <a href="${basics.url}" target="_blank">${basics.url.replace(/^https?:\/\//, '')}</a>
-                                    </div>
-                                    
-                                    <div class="contact-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span>${basics.location.city}, ${basics.location.region}, ${basics.location.countryCode}</span>
+                                    <div>
+                                        <p class="contact-label">Email</p>
+                                        <p class="contact-value">
+                                            <a href="mailto:${basics.email}">${basics.email}</a>
+                                        </p>
                                     </div>
                                 </div>
                                 
-                                <div class="social-links" style="margin-top: var(--spacing-lg);">
-                                    ${basics.profiles.map(profile => `
-                                        <a href="${profile.url}" target="_blank" class="social-link" title="${profile.network}">
-                                            <i class="${getSocialIcon(profile.network)}"></i>
-                                        </a>
-                                    `).join('')}
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <p class="contact-label">Teléfono</p>
+                                        <p class="contact-value">
+                                            <a href="tel:${basics.phone}">${basics.phone}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <div>
+                                        <p class="contact-label">Web</p>
+                                        <p class="contact-value">
+                                            <a href="${basics.url}" target="_blank">${basics.url.replace(/^https?:\/\//, '')}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <p class="contact-label">Ubicación</p>
+                                        <p class="contact-value">
+                                            ${basics.location.city}, ${basics.location.region}, ${basics.location.countryCode}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+                            
+                            <div class="contact-social">
+                                ${basics.profiles.map(profile => `
+                                    <a href="${profile.url}" target="_blank" class="social-link" title="${profile.network}">
+                                        <i class="${getSocialIcon(profile.network)}"></i>
+                                    </a>
+                                `).join('')}
+                            </div>
                         </div>
-                    </section>
-                </main>
+                    </div>
+                </section>
                 
-                <footer class="site-footer">
-                    <div class="container footer-content">
-                        <p class="footer-text">&copy; ${new Date().getFullYear()} ${basics.name} ${basics.last_name}. Todos los derechos reservados.</p>
-                        
-                        <div class="footer-links">
-                            ${basics.profiles.map(profile => `
-                                <a href="${profile.url}" target="_blank" title="${profile.network}">
-                                    <i class="${getSocialIcon(profile.network)}"></i>
-                                </a>
-                            `).join('')}
-                        </div>
+                <footer class="footer">
+                    <div class="footer-shape"></div>
+                    <div class="container">
+                        <p>&copy; ${new Date().getFullYear()} ${basics.name} ${basics.last_name}. Todos los derechos reservados.</p>
                     </div>
                 </footer>
             `;
